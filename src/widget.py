@@ -10,14 +10,11 @@ def mask_account_card(card_inf:str) -> str:
             break
         else:
             index += 1
-
-    name = card_inf[:index-1]
-    number = card_inf[index:]
-    if name == 'Счет':
-        number = masks.get_mask_account(int(number))
+    if card_inf[:index-1] == 'Счет':
+        return card_inf[:index-1]+' '+masks.get_mask_account(int(card_inf[index:]))
     else:
-        number = masks.get_mask_card_number(int(number))
-    return name+' '+number
+        return card_inf[:index-1]+' '+masks.get_mask_card_number(int(card_inf[index:]))
+
 
 
 def get_date(date:str) -> str:
