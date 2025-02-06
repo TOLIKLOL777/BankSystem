@@ -4,9 +4,9 @@ from typing import Any
 def filter_by_state(list_of_dicts: list[Any], state: str = "EXECUTED") -> list[Any]:
     """Проверяет значение в словарях на заданное и если оно совпадает то, выводит его"""
     correct_list = []
-    for i in range(0, len(list_of_dicts) - 1):
-        if list_of_dicts[i]["state"] == state:
-            correct_list.append(list_of_dicts[i])
+    for num_dict in range(0, len(list_of_dicts) - 1):
+        if list_of_dicts[num_dict]["state"] == state:
+            correct_list.append(list_of_dicts[num_dict])
     return correct_list
 
 
