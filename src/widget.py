@@ -12,15 +12,15 @@ def mask_account_card(card_inf: str) -> str:
         else:
             index += 1
     if card_inf[: index - 1] == "Счет":
-        if len(card_inf[index:]) == 20:
+        if len(card_inf[index:]) == 20 and card_inf[index:].isdigit():
             return card_inf[: index - 1] + " " + masks.get_mask_account(card_inf[index:])
         else:
-            return 'Error'
+            return "Error"
     else:
-        if len(card_inf[index:]) == 16:
+        if len(card_inf[index:]) == 16 and card_inf[index:].isdigit():
             return card_inf[: index - 1] + " " + masks.get_mask_card_number(card_inf[index:])
         else:
-            return 'Error'
+            return "Error"
 
 
 def get_date(date: str) -> str:
@@ -31,4 +31,4 @@ def get_date(date: str) -> str:
     if year.isdigit() and month.isdigit() and day.isdigit():
         return f"{day}.{month}.{year}"
     else:
-        return 'Error'
+        return "Error"
