@@ -11,6 +11,8 @@ def mask_account_card(card_inf: str) -> str:
             break
         else:
             index += 1
+    if card_inf[index - 1] != " ":
+        return "Error"
     if card_inf[: index - 1] == "Счет":
         if len(card_inf[index:]) == 20 and card_inf[index:].isdigit():
             return card_inf[: index - 1] + " " + masks.get_mask_account(card_inf[index:])
