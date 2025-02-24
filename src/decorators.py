@@ -17,14 +17,15 @@ def log(filename=""):
                     log_file = open(filename, "w")
                     log_file.write(f"{func.__name__} error:{type(e).__name__}. Inputs: {args}, {kwargs}")
                     log_file.close()
+                    return ""
             else:
                 if filename == "":
-                    return func.__name__ + " ok"
+                    return f"{func.__name__} {result}"
                 else:
                     log_file = open(filename, "w")
-                    log_file.write(func.__name__ + " ok")
+                    log_file.write(f"{func.__name__} {result}")
                     log_file.close()
-            return ""
+                    return ""
 
         return inner
 
