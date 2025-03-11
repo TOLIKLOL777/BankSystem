@@ -10,7 +10,7 @@ def test_log_console(capsys):
 
     print(test_function(1, 3))
     captured = capsys.readouterr()
-    assert captured.out == "test_function ok\n"
+    assert captured.out == "test_function 4\n"
     print(test_function(1, "4"))
     captured = capsys.readouterr()
     assert captured.out == "test_function error:TypeError. Inputs: (1, '4'), {}\n"
@@ -25,7 +25,7 @@ def test_log_file():
 
     test_function(1, 10)
     text = open(filename, "r")
-    assert text.read() == "test_function ok"
+    assert text.read() == "test_function 11"
     test_function(1, "10")
     text = open(filename, "r")
     assert text.read() == """test_function error:TypeError. Inputs: (1, '10'), {}"""
