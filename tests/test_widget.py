@@ -12,7 +12,7 @@ from src import widget
         ("Maestro 159683786870519", "Error"),
         ("Maestro 159683786prtyipt", "Error"),
         ("Maestro1596837868705199", "Error"),
-        ("Счет 7365410843013587430", "Error")
+        ("Счет 7365410843013587430", "Error"),
     ],
 )
 def test_mask_account_card(card_or_account_info, expected):
