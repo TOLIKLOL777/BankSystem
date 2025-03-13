@@ -14,7 +14,7 @@ def log(filename=""):
                 if filename == "":
                     return f"{func.__name__} error:{type(e).__name__}. Inputs: {args}, {kwargs}"
                 else:
-                    log_file = open(filename, "w")
+                    log_file = open(f"..\\logs\\{filename}", "w")
                     log_file.write(f"{func.__name__} error:{type(e).__name__}. Inputs: {args}, {kwargs}")
                     log_file.close()
                     return ""
@@ -22,7 +22,7 @@ def log(filename=""):
                 if filename == "":
                     return f"{func.__name__} {result}"
                 else:
-                    log_file = open(filename, "w")
+                    log_file = open(f"..\\logs\\{filename}", "w")
                     log_file.write(f"{func.__name__} {result}")
                     log_file.close()
                     return ""
