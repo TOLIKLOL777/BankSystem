@@ -1,3 +1,5 @@
+import os
+
 from src.decorators import log
 
 
@@ -22,8 +24,11 @@ def test_log_file():
         return x + y
 
     test_function(1, 10)
-    text = open(filename, "r")
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    dir = os.path.join(base_dir, "..", "logs")
+    file_path = os.path.join(dir, filename)
+    text = open(file_path, "r")
     assert text.read() == "test_function 11"
     test_function(1, "10")
-    text = open(filename, "r")
+    text = open(file_path, "r")
     assert text.read() == """test_function error:TypeError. Inputs: (1, '10'), {}"""

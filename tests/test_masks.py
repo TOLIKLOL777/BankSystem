@@ -27,3 +27,13 @@ def test_mask_card_number(numbers_info, expected):
 )
 def test_get_mask_account(numbers, expected):
     assert masks.get_mask_account(numbers) == expected
+
+
+def test_exceptions():
+    class da:
+        def __str__(self):
+            raise TypeError
+
+    obj = da()
+    assert masks.get_mask_account(obj) == "Error"
+    assert masks.get_mask_card_number(obj) == "Error"
