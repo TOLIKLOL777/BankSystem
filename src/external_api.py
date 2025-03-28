@@ -15,7 +15,7 @@ def get_transaction_amount(transaction_info, currency="RUB"):
         API_KEY = os.getenv("API_KEY")
         headers = {"apikey": f"{API_KEY}"}
         response = requests.get(url, headers=headers)
-        return response.json()["result"]
+        return response.json().get("result")
 
 
 transaction = {
