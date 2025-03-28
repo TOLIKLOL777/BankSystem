@@ -16,23 +16,17 @@ logger.addHandler(file_handler)
 def get_transaction(json_file_path):
     """Принимает путь до json файла и выводит его списком"""
     logger.info("Проверка что файл есть на пути")
-    if os.path.exists(json_file_path):
-        try:
+    try:
+        if os.path.exists(json_file_path):
             with open(json_file_path, "r", encoding="utf-8") as file:
                 logger.info("Открываем и читаем файл")
                 transactions = json.load(file)
                 logger.info("Проверка что файл имеет нужный тип")
                 if isinstance(transactions, list):
                     return transactions
-                else:
-                    logger.error("Файл находится не в списке")
-                    return []
-        except (json.JSONDecodeError, TypeError):
-            logger.error("Ошибка при чтении json файла")
+        else:
+            logger.error(f"Файл по пути {json_file_path} не существует")
             return []
-    else:
-        logger.error(f"Файл по пути {json_file_path} не существует")
+    except (json.JSONDecodeError, TypeError):
+        logger.error("Ошибка при чтении json файла")
         return []
-
-
-get_transaction("..\\data\\operations.json")
