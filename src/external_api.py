@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 
 
 def get_transaction_amount(transaction_info, currency="RUB"):
+    """Принимает на вход банковскую операцию и код валюты(по умолчанию RUB) и возвращает сумму транзакции в нужной валюте"""
     code = transaction_info.get("operationAmount").get("currency").get("code")
     amount = transaction_info.get("operationAmount").get("amount")
     if code == currency:
@@ -16,16 +17,3 @@ def get_transaction_amount(transaction_info, currency="RUB"):
         headers = {"apikey": f"{API_KEY}"}
         response = requests.get(url, headers=headers)
         return response.json().get("result")
-
-
-transaction = {
-    "id": 441945886,
-    "state": "EXECUTED",
-    "date": "2019-08-26T10:50:58.294041",
-    "operationAmount": {"amount": "31957.58", "currency": {"name": "руб.", "code": "USD"}},
-    "description": "Перевод организации",
-    "from": "Maestro 1596837868705199",
-    "to": "Счет 64686473678894779589",
-}
-
-print(get_transaction_amount(transaction))
